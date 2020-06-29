@@ -1,86 +1,42 @@
 //Password variable values:
-var upperChoice = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerChoice = "abcdefghijklmnopqrstuvwxyz";
-var numberChoice = "1234567890";
-var specialCharChoice = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var generateButton = document.querySelector("#generate");
+var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lower = "abcdefghijklmnopqrstuvwxyz";
+var numbers = "1234567890";
+var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-//Choices declared outside the if statement so they can be concatenated upon condition
-var choices;
+var length = Number(prompt("How many characters would you like your password to be?"));
+while (isNaN(length) || length < 8 || length > 128) length = Number(prompt("Length must be between 8 and 128 characters. How many characters would you like your password to have?"));
+    
+var uppers = confirm("Do you want uppercase letters to be used?");
+var lowers = confirm("Do you want lowercase letters to be used?");
+var numbers = confirm("Do you want numbers to be used?");
+var symbols = confirm("Do you want special characters to be used?");
 
-var get = document.querySelector("#generate");
+while (!uppers && !lowers && !numbers && !symbols) {
+    alert("You must use at least one of these character types!");
+    uppers = confirm("Do you want uppercase letters to be included?");
+    lowers = confirm("Do you want lowercase letters to be included?");
+    numbers = confirm("Do you want numbers to be included?");
+    specials = confirm("Do you want special characters to be included?");
+}
 
-get.addEventListener("click", function () {
-    ps = generatePassword();
-    document.getElementById("password").placeholder = ps;
+window.addEventListener('click', function() {
+    generateNewPassword();
 });
 
-function generatePassword() {
-    var howManyChar = prompt("How many characters do you want the password to have? (Choose between 8 and 128 characters.");
-    if (!howManyChar) {
-        alert("This needs a value");
+function generateNewPassword() {
+    var password = "";
+
+    var allowed = {};
+    if (uppers) password += rando(allowed.uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    if (lowers) password += rando(allowed.lowers = "abcdefghijklmnopqrstuvwxyz");
+    if (numbers) password += rando(allowed.numbers = "1234567890");
+    if (symbols) password += rando(allowed.symbols = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~");
+
+    for (var i = password.length; i < length; i++) password += rando(rando(allowed).value);
+
+    document.getElementById("password").value = randoSequence(password).join("");
     
-    } else if (howManyChar < 8 || howManyChar > 128) {
-        howManyChar = parseInt(prompt("You must choose between 8 and 128!"));
-    
-    } else {
-        upper = confirm("Do you want to include uppercase letters in your password?");
-
-        lower = confirm("Do you want to include lowercase letters in your password?");
-
-        number = confirm("Do you want to include numbers in your password?");
-
-        specialChar = confirm("Do you want to include special characters in your password?");
-    
-    };
-        //4 negative options
-        if (!upper && !lower && !number && !specialChar) {
-            alert("If you chose 'No' for everything, then you won't receive a new password");
-        }
-
-        if (howManyChar > 128) {
-            alert("You can't have more than 128 characters.");
-        }
-
-        if (howManyChar < 8) {
-            alert("You can't have less than 8 characters.");
-        }
-
-        while (password.length<howManyChar) {
-            else if (upper)   true && lower === false && number === false && specialChar === false) {
-            for (var i = 0; i < parseInt(howManyChar); i++) {
-                randomNumber(upperChoice) //a single element from array
-                + randomNumber(lowerChoice)
-            }
-            //independent only if uppercase is randomized
-            if(upperChoice) {
-
-            }
-
-            if(lowerChoice) {
-
-            }
-
-            for(i = 0; i < howManyChar; i++ ) {
-               var passwordText = passwordText += randomizeChoice()
-               return passwordText;
-            }
-           
-        }
-
-        else if (upper === true && lower === true && number === true && specialChar === true) {
-            while (passwordText.length<howManyChar) {
-                upperChoice = (upper.length * Math.random());
-                lowerChoice = (lower.length * Math.random());
-                numberChoice = (number.length * Math.random());
-                specialCharChoice = (specialChar * Math.random());
-                hold = password.charAt(upperChoice);
-                hold = (password.length%2==0)?(hold):(hold);
-                character += hold;
-                if (upperChoice === true) (character += upper.charAt ())
-            }
-
-    }
-    password=password.split('').sort(function(){return Math.random()}).join('');
-
-    return password.substr(0,len);
 }
+
