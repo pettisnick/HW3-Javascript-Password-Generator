@@ -1,4 +1,4 @@
-# 03 JavaScript: Password Generator
+# HW3 JavaScript: Password Generator
 
 Create an application that generates a random password based on user-selected criteria. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
@@ -28,15 +28,12 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN I click the button to generate a password
 THEN the password is displayed in the text box
-WHEN I click on the button again
+WHEN I click on the generate password button again
 THEN a new password will be generated using the same criteria
+When I click 'refresh' on the address bar
+Then the password is deleted and the entire process begins again by asking "How many characters would you like your password to be?"
 ```
 
-The following image demonstrates the application functionality:
-
-![password generator demo](./Assets/03-javascript-homework-demo.png)
-
-## Review
 
 You are required to submit the following for review:
 
