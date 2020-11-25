@@ -4,6 +4,8 @@ Create an application that generates a random password based on user-selected cr
 
 [Deployed Link](https://pettisnick.github.io/HW3-Javascript-Password-Generator/)
 
+![passwordGen](https://user-images.githubusercontent.com/65740432/100289989-32b7f700-2f48-11eb-95ce-a0b5a1d871ab.PNG)
+
 ## User Story
 
 ```
